@@ -1,0 +1,22 @@
+[PrefixDeclaration]
+:		http://joshuabezaleel.com/book1-test1#
+owl:		http://www.w3.org/2002/07/owl#
+rdf:		http://www.w3.org/1999/02/22-rdf-syntax-ns#
+xml:		http://www.w3.org/XML/1998/namespace
+xsd:		http://www.w3.org/2001/XMLSchema#
+obda:		https://w3id.org/obda/vocabulary#
+rdfs:		http://www.w3.org/2000/01/rdf-schema#
+
+[SourceDeclaration]
+sourceUri	Book
+connectionUrl	jdbc:teiid:bookvdb@mm://localhost:31000;useJDBC4ColumnNameAndLabelSemantics=false
+username	user
+password	user1664!
+driverClass	org.teiid.jdbc.TeiidDriver
+
+[MappingDeclaration] @collection [[
+mappingId	Book
+target		:book/{bk_book} a :Book ; :title {bk_title} . 
+source		select "bk_book", "bk_title" from "tb_book1"
+]]
+
